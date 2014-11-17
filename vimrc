@@ -27,7 +27,9 @@ python del powerline_setup
 
 au FocusLost * silent! wa
 
-autocmd bufwritepost .vimrc source $MYVIMRC
+if has("autocmd")
+    autocmd! BufWritePost .vimrc source $MYVIMRC
+endif
 
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
@@ -55,7 +57,7 @@ let mapleader=","
 noremap <leader>f ^
 noremap <leader>tts :%s/<tab>/  /g<cr>
 noremap <leader>drc :g/\s*#/d<cr>
-noremap <leader>vimrc :tabe $MYVIMRC<cr>
+noremap <leader>vimrc :tabe ~/.vim/vimrc<cr>
 noremap <leader>w <C-w><C-w>
 noremap <leader>o o<esc>
 noremap <leader>O O<esc>
