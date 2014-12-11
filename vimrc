@@ -87,4 +87,4 @@ redir END
 call feedkeys('i'.substitute(output, '^[\n]*\(.\{-}\)[\n]*$', '\1', 'gm'))
 endfunction
 
-command -nargs=+ Iruby call InsertCommand("ruby " . <q-args>)
+command -nargs=+ I call InsertCommand(<q-args>)
