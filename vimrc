@@ -41,6 +41,8 @@ noremap :Q! :q!
 inoremap ii <esc>
 inoremap jj <c-o>o
 inoremap uu <c-o>O
+inoremap hh <c-o>?\%<c-r>=line('.')<Return>l\({}\\|\[]\\|<>\\|><\\|()\\|""\\|''\\|><lt>\)?s+1<Return>
+inoremap kk <Esc>A
 
 noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
