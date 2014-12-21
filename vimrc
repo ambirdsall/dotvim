@@ -53,9 +53,9 @@ noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 
-noremap <up> <c-u>
+noremap <up> <c-y>
 noremap <s-up> <c-b>
-noremap <down> <c-d>
+noremap <down> <c-e>
 noremap <s-down> <c-f>
 
 let mapleader=","
