@@ -45,6 +45,9 @@ inoremap uu <c-o>O
 inoremap hh <c-o>?\%<c-r>=line('.')<Return>l\({}\\|\[]\\|<>\\|><\\|()\\|""\\|''\\|><lt>\)?s+1<Return>
 inoremap kk <Esc>A
 
+nnoremap n nzz
+nnoremap N Nzz
+
 noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
