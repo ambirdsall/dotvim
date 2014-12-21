@@ -64,7 +64,7 @@ noremap <leader>f ^
 noremap <leader>tts :%s/<tab>/  /g<cr>
 noremap <leader>drc :g/\s*#/d<cr>
 noremap <leader>vimrc :tabe ~/.vim/vimrc<cr>
-noremap <leader>w <C-w><C-w>
+noremap <leader>w <c-w><c-w>
 noremap <leader>o o<esc>
 noremap <leader>O O<esc>
 noremap <leader>ll :Lexplore <bar> vertical resize 30<cr>
