@@ -82,6 +82,9 @@ imap <leader>e <c-y>,
 
 set omnifunc=syntaxcomplete#Complete
 
+" stop that autocomment noise
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " insert evaluated code output into buffer
 " http://blog.joncairns.com/2014/10/evaluate-ruby-or-any-command-and-insert-into-vim-buffers/
 function! InsertCommand(command)
