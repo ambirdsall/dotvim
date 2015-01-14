@@ -2,7 +2,6 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 color slate
-color delek
 
 syntax enable
 
