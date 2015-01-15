@@ -67,6 +67,7 @@ noremap <leader>o o<esc>
 noremap <leader>O O<esc>
 noremap <leader>ll :Lexplore <bar> vertical resize 30<cr>
 noremap <leader>small :vertical resize 30<cr>
+noremap <leader>rei ggVG=<c-o><c-o>
 
 " comments
 map <leader>c gcc
