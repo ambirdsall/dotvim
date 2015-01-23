@@ -31,6 +31,7 @@ if has("autocmd")
 endif
 
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+let NERDTreeShowLineNumbers=1
 
 noremap :W :w
 noremap :Wq :wq
