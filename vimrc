@@ -2,7 +2,7 @@ set nocompatible
 execute pathogen#infect()
 call pathogen#helptags()
 
-color slate
+color morning
 
 syntax enable
 
