@@ -1,3 +1,4 @@
+set nocompatible
 execute pathogen#infect()
 call pathogen#helptags()
 
