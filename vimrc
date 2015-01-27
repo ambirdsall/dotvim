@@ -16,8 +16,8 @@ set ruler
 set mouse=a
 set clipboard=unnamed
 set softtabstop=2 shiftwidth=2 expandtab
+set hidden
 set noswapfile
-set nocompatible
 set encoding=utf-8
 set timeoutlen=500
 
