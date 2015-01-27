@@ -33,11 +33,9 @@ endif
 
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let NERDTreeShowLineNumbers=1
+let g:ack_autofold_results = 1
 
-noremap :W :w
-noremap :Wq :wq
-noremap :Q :q
-noremap :Q! :q!
+nnoremap ; :
 
 inoremap ii <esc>
 inoremap jf <esc>
