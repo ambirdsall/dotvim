@@ -62,16 +62,16 @@ let mapleader=","
 noremap <leader>f ^
 noremap <leader>tts :%s/<tab>/  /g<cr>
 noremap <leader>drc :g/\s*#/d<cr>
-noremap <leader>vimrc :tabe ~/.vim/vimrc<cr>
 noremap <leader>o o<esc>
 noremap <leader>O O<esc>
 noremap <leader>ll :Lexplore <bar> vertical resize 30<cr>
 noremap <leader>small :vertical resize 30<cr>
 noremap <leader>rei ggVG=<c-o><c-o>
+noremap <leader>ev :tabe ~/.vim/vimrc<cr>
+noremap <leader>rc :source ~/.vimrc<cr>
 
 " comments
 map <leader>c gcc
-map <leader>helptags :call pathogen#helptags()<cr>
 " ctags
 noremap <leader>. :TagbarToggle<cr>
 noremap <leader>sw :StripWhitespace<cr>
