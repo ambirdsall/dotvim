@@ -37,7 +37,6 @@ let g:ack_autofold_results = 1
 
 nnoremap ; :
 
-inoremap ii <esc>
 inoremap jf <esc>
 inoremap jj <c-o>o
 inoremap uu <c-o>O
