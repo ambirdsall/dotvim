@@ -68,6 +68,7 @@ noremap <leader>small :vertical resize 30<cr>
 noremap <leader>rei ggVG=<c-o><c-o>
 noremap <leader>ev :tabe ~/.vim/vimrc<cr>
 noremap <leader>rc :source ~/.vimrc<cr>
+noremap <leader>w :set wrap!<cr>
 
 " comments
 map <leader>c gcc
