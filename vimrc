@@ -49,6 +49,8 @@ nnoremap N Nzz
 
 nnoremap Y y$
 
+cnoremap ack Ack!
+
 noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
