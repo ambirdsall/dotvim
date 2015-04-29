@@ -2,7 +2,8 @@ set nocompatible
 execute pathogen#infect()
 call pathogen#helptags()
 
-color morning
+color slate
+color delek
 
 syntax enable
 
@@ -46,6 +47,8 @@ inoremap kk <Esc>A
 nnoremap n nzz
 nnoremap N Nzz
 
+nnoremap Y y$
+
 noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
@@ -75,7 +78,7 @@ map <leader>c gcc
 " ctags
 noremap <leader>. :TagbarToggle<cr>
 noremap <leader>sw :StripWhitespace<cr>
-noremap <leader>l :NERDTree<cr>
+noremap <leader>l :NERDTreeToggle<cr>
 " emmet
 imap <leader>e <c-y>,
 
