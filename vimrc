@@ -89,7 +89,7 @@ map <leader>c gcc
 " ctags
 noremap <leader>. :TagbarToggle<cr>
 noremap <leader>sw :StripWhitespace<cr>
-noremap <leader>l :NERDTreeToggle<cr>
+noremap <leader>l :NERDTreeTabsToggle<cr>
 " emmet
 imap <leader>e <c-y>,
 
