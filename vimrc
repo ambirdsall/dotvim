@@ -2,6 +2,8 @@ set nocompatible
 execute pathogen#infect()
 call pathogen#helptags()
 
+runtime macros/matchit.vim
+
 color slate
 color delek
 
@@ -30,19 +32,27 @@ au FocusLost * silent! wa
 
 if has("autocmd")
     autocmd! BufWritePost .vimrc source $MYVIMRC
+    autocmd BufNewFile,BufRead ~/job_search/* nnoremap j gj
+    autocmd BufNewFile,BufRead ~/job_search/* nnoremap k gk
 endif
 
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let NERDTreeShowLineNumbers=1
 let g:ack_autofold_results = 1
 
+let mapleader=","
+
 nnoremap ; :
+nnoremap <leader>; ;
 
 inoremap jf <esc>
+inoremap fj <esc>
 inoremap jj <c-o>o
 inoremap uu <c-o>O
 inoremap hh <c-o>?\%<c-r>=line('.')<Return>l\({}\\|\[]\\|<>\\|><\\|()\\|""\\|''\\|><lt>\)?s+1<Return>
 inoremap kk <Esc>A
+inoremap <c-h> <left>
+inoremap <c-l> <right>
 
 nnoremap n nzz
 nnoremap N Nzz
@@ -61,8 +71,7 @@ noremap <s-up> <c-b>
 noremap <down> <c-e>
 noremap <s-down> <c-f>
 
-let mapleader=","
-
+" TAKE ME TO YOUR LEADER
 noremap <leader>f ^
 noremap <leader>tts :%s/<tab>/  /g<cr>
 noremap <leader>drc :g/\s*#/d<cr>
