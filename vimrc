@@ -134,7 +134,7 @@ noremap <down> <c-e>
 let mapleader=" "
 
 " quickly jump between last two files.
-nnoremap <leader><leader> <c-^>
+nnoremap <leader><leader><leader> <c-^>
 " jump to first non-whitespace character.
 nnoremap <leader>f ^
 nnoremap <leader>tts :%s/<tab>/  /g<cr>
@@ -142,22 +142,29 @@ nnoremap <leader>tts :%s/<tab>/  /g<cr>
 nnoremap <leader>dc :g/\s*#/d<cr>
 " reindent entire file.
 nnoremap <leader>rei ggVG=<c-o><c-o>
-nnoremap <leader>ev :tabe ~/.vim/vimrc<cr>
-nnoremap <leader>rc :source ~/.vimrc<cr>
 " toggle linewrap.
 nnoremap <leader>w :set wrap!<cr>
-" fugitive.vim git status.
-nnoremap <leader>s :Gstatus<cr>
 " new lines, but you stay in normal mode.
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
 
-" comments
+" vim-fugitive git status.
+nnoremap <leader>s :Gstatus<cr>
+" vim-commentary
 nmap <leader>c gcc
 " ctags
 nnoremap <leader>. :TagbarToggle<cr>
+" vim-better-whitespace
 nnoremap <leader>sw :StripWhitespace<cr>
-nnoremap <leader>l :NERDTreeTabsToggle<cr>
+" vim-nerdtree-tabs
+nnoremap <leader>d :NERDTreeTabsToggle<cr>
+" vim-easymotion
+nnoremap <Leader>l <Plug>(easymotion-lineforward)
+nnoremap <Leader>j <Plug>(easymotion-j)
+nnoremap <Leader>k <Plug>(easymotion-k)
+nnoremap <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
 set omnifunc=syntaxcomplete#Complete
 
