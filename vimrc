@@ -163,7 +163,7 @@ nnoremap <Leader>j <Plug>(easymotion-j)
 nnoremap <Leader>k <Plug>(easymotion-k)
 nnoremap <Leader>h <Plug>(easymotion-linebackward)
 
-let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 set omnifunc=syntaxcomplete#Complete
 
