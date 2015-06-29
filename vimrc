@@ -128,6 +128,8 @@ noremap <down> <c-e>
 """"""""""""""""""""""""""
 let mapleader=" "
 
+" mess with this file like it ain't no thing.
+nnoremap <leader>ev :tabe ~/.vim/vimrc<cr>
 " quickly toggle between last two files.
 nnoremap <leader><leader><leader> <c-^>
 " jump to first non-whitespace character.
