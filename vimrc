@@ -133,7 +133,7 @@ noremap <down> <c-e>
 """"""""""""""""""""""""""
 let mapleader=" "
 
-" quickly jump between last two files.
+" quickly toggle between last two files.
 nnoremap <leader><leader><leader> <c-^>
 " jump to first non-whitespace character.
 nnoremap <leader>f ^
@@ -143,7 +143,9 @@ nnoremap <leader>dc :g/\s*#/d<cr>
 " reindent entire file.
 nnoremap <leader>rei ggVG=<c-o><c-o>
 " toggle linewrap.
-nnoremap <leader>w :set wrap!<cr>
+nnoremap <leader>r :set wrap!<cr>
+" save wicked fast.
+nnoremap <leader>w :w<cr>
 " new lines, but you stay in normal mode.
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
