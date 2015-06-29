@@ -119,11 +119,6 @@ inoremap <c-l> <right>
 nnoremap Y y$
 " I never want to automatically jump to the first match. That's silly.
 cnoreabbrev Ack Ack!
-" navigate splits more easily.
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
 " up and down scroll browser-style
 noremap <up> <c-y>
 noremap <down> <c-e>
