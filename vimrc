@@ -55,6 +55,8 @@ let g:html_indent_tags = 'li\|p'
 let g:syntastic_check_on_open=1
 " Angular Is Not A Crime.
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" keep cursor column when using JK easymotion
+let g:EasyMotion_startofline = 0
 
 " powerline is the best line I know.
 python from powerline.vim import setup as powerline_setup
@@ -163,8 +165,6 @@ nnoremap <Leader>l <Plug>(easymotion-lineforward)
 nnoremap <Leader>j <Plug>(easymotion-j)
 nnoremap <Leader>k <Plug>(easymotion-k)
 nnoremap <Leader>h <Plug>(easymotion-linebackward)
-
-let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 set omnifunc=syntaxcomplete#Complete
 
