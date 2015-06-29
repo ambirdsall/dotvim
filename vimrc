@@ -43,9 +43,10 @@ set splitbelow
 set splitright
 " always compare diffs with vertical splits.
 set diffopt+=vertical
-" linenumbers on netrw for easy navigation.
+" more data makes for easier navigation.
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let NERDTreeShowLineNumbers=1
+let NERDTreeShowHidden=1
 " fold together all hits from same file in ack results when not under cursor.
 let g:ack_autofold_results = 1
 " Treat <li> and <p> tags like the block tags they are
