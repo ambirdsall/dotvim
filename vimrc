@@ -144,6 +144,8 @@ nnoremap <leader>tts :%s/<tab>/  /g<cr>
 nnoremap <leader>dc :g/\s*#/d<cr>
 " reindent entire file.
 nnoremap <leader>rei ggVG=<c-o><c-o>
+" yank every dang thing.
+nnoremap <leader>ya ggVGy<c-o><c-o>
 " toggle linewrap.
 nnoremap <leader>r :set wrap!<cr>
 " save wicked fast.
@@ -164,11 +166,8 @@ nnoremap <leader>. :TagbarToggle<cr>
 nnoremap <leader>sw :StripWhitespace<cr>
 " vim-nerdtree-tabs
 nnoremap <leader>d :NERDTreeTabsToggle<cr>
-" vim-easymotion
-nnoremap <Leader>l <Plug>(easymotion-lineforward)
-nnoremap <Leader>j <Plug>(easymotion-j)
-nnoremap <Leader>k <Plug>(easymotion-k)
-nnoremap <Leader>h <Plug>(easymotion-linebackward)
+" easymotion
+nmap <leader>a <Plug>(easymotion-s2)
 
 set omnifunc=syntaxcomplete#Complete
 
