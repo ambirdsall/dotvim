@@ -105,3 +105,6 @@
 [submodule "bundle/vim-autoclose"]
 	path = bundle/vim-autoclose
 	url = git@github.com:Townk/vim-autoclose.git
+[submodule "bundle/closetag.vim"]
+	path = bundle/closetag.vim
+	url = git@github.com:vim-scripts/closetag.vim.git
