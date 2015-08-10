@@ -24,7 +24,11 @@ set numberwidth=5
 set ruler
 " make it obvious when lines run over 80ch; set the color to black for subtlety.
 set colorcolumn=81
+" for fuck's sake, use git for source integrity, not obnoxious backup files.
+set noswapfile
+set encoding=utf-8
 highlight ColorColumn ctermbg=0
+highlight Folded ctermbg=NONE
 " just because you shouldn't use the mouse doesn't mean you shouldn't be able to
 set mouse=a
 " default register is the system clipboard, because vim ain't the only program.
@@ -33,9 +37,6 @@ set clipboard=unnamed
 set softtabstop=2 shiftwidth=2 shiftround expandtab
 " allow hidden buffers, to maintain unsaved changes without cluttering screen.
 set hidden
-" for fuck's sake, use git for source integrity, not obnoxious backup files.
-set noswapfile
-set encoding=utf-8
 " 450ms is enough to finish typing combos even on a bad day, but not toooo long.
 set timeoutlen=450
 " split panes spawn to the right and bottom, b/c Principle of Least Surprise.
@@ -73,9 +74,11 @@ if has("autocmd")
   " Automatically source vimrc when saving changes to it.
   autocmd! BufWritePost vimrc source $MYVIMRC
 
-  " All files in job_search are prose, and can be expected to have long lines.
+  " All files in job_search are en_us prose, and will have long lines.
   autocmd BufNewFile,BufRead ~/job_search/* nnoremap j gj
   autocmd BufNewFile,BufRead ~/job_search/* nnoremap k gk
+  autocmd BufNewFile,BufRead ~/job_search/* setlocal spell spelllang=en_us
+  autocmd BufNewFile,BufRead ~/job_search/* nnoremap <leader>sp :setlocal spell! spelllang=en_us<cr>
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
@@ -103,6 +106,8 @@ endif
 nnoremap ; :
 nnoremap : ;
 " smash escape
+inoremap jk <esc>
+inoremap kj <esc>
 inoremap jf <esc>
 inoremap fj <esc>
 " quickly insert new line above...
@@ -137,10 +142,12 @@ let mapleader=" "
 nnoremap <leader>ev :tabe ~/.vim/vimrc<cr>
 " quickly toggle between last two files.
 nnoremap <leader><leader><leader> <c-^>
+" navigate tabs quickly
+nnoremap <leader>t gt
+nnoremap <leader>T gT
 " jump to first non-whitespace character.
 nnoremap <leader>f ^
-nnoremap <leader>tts :%s/<tab>/  /g<cr>
-" delete all lines whose first non-whitespace character is '#'.
+" delete all lines starting with '#'.
 nnoremap <leader>dc :g/\s*#/d<cr>
 " reindent entire file.
 nnoremap <leader>rei ggVG=<c-o><c-o>
@@ -153,6 +160,10 @@ nnoremap <leader>w :w<cr>
 " new lines, but you stay in normal mode.
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
+" CSS tags
+" place your cursor on an id or class and hit <leader>]
+" to jump to the definition
+nnoremap <leader>] :tag /<c-r>=expand('<cword>')<cr><cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGINS AND WHATNOT:
 

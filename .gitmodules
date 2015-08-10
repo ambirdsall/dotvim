@@ -102,3 +102,6 @@
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
 	url = git@github.com:tpope/vim-markdown.git
+[submodule "bundle/vim-autoclose"]
+	path = bundle/vim-autoclose
+	url = git@github.com:Townk/vim-autoclose.git
