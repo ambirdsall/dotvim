@@ -23,7 +23,8 @@ set numberwidth=5
 " redundant with powerline installed; left in b/c Wu-Tang is for the children.
 set ruler
 " make it obvious when lines run over 80ch; set the color to black for subtlety.
-set colorcolumn=81
+set textwidth=80
+set colorcolumn=+1
 " for fuck's sake, use git for source integrity, not obnoxious backup files.
 set noswapfile
 set encoding=utf-8
@@ -105,19 +106,21 @@ endif
 " because life is too short to hit shift that often.
 nnoremap ; :
 nnoremap : ;
-" smash escape
-inoremap jk <esc>
-inoremap kj <esc>
+" smash escape            CURSOR POSITION AFTER:
+"                       |F| | |J| | <= backwards <=
 inoremap jf <esc>
 inoremap fj <esc>
+"                       | | | |J|K| => forwards =>
+inoremap jk <esc>l
+inoremap kj <esc>l
 " quickly insert new line above...
 inoremap jj <c-o>o
 " ...or below the current one in insert mode.
 inoremap uu <c-o>O
-" quickly jump to inside an empty matched pair (e.g. '()', '""') in insert.
-inoremap hh <c-o>?\%<c-r>=line('.')<Return>l\({}\\|\[]\\|<>\\|><\\|()\\|""\\|''\\|><lt>\)?s+1<Return>
 " quickly jump to end of current line in insert mode.
 inoremap kk <Esc>A
+"   or beginning
+inoremap hh <Esc>I
 " move around without arrow keys in insert mode.
 inoremap <c-h> <left>
 inoremap <c-j> <down>
@@ -127,9 +130,11 @@ inoremap <c-l> <right>
 nnoremap Y y$
 " I never want to automatically jump to the first match. That's silly.
 cnoreabbrev Ack Ack!
-" up and down scroll browser-style
+" scroll browser-style
 noremap <up> <c-y>
 noremap <down> <c-e>
+nnoremap <left> zh
+nnoremap <right> zl
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" TAKE ME TO YOUR LEADER "
@@ -147,6 +152,8 @@ nnoremap <leader>t gt
 nnoremap <leader>T gT
 " jump to first non-whitespace character.
 nnoremap <leader>f ^
+" quickly jump to inside an empty matched pair (e.g. '()', '""')
+nnoremap <leader>in ?\%<c-r>=line('.')<Return>l\({}\\|\[]\\|<>\\|><\\|()\\|""\\|''\\|><lt>\)?s+1<Return>
 " delete all lines starting with '#'.
 nnoremap <leader>dc :g/\s*#/d<cr>
 " reindent entire file.
