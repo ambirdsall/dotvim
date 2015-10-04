@@ -57,10 +57,6 @@
 	path = bundle/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
 	ignore = dirty
-[submodule "bundle/vim-sensible"]
-	path = bundle/vim-sensible
-	url = https://github.com/tpope/vim-sensible.git
-	ignore = dirty
 [submodule "bundle/vim-sleuth"]
 	path = bundle/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
