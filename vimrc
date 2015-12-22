@@ -31,6 +31,8 @@ highlight ColorColumn ctermbg=0
 highlight Folded ctermbg=NONE
 " just because you shouldn't use the mouse doesn't mean you shouldn't be able to
 set mouse=a
+" ditto deleting shit in insert mode
+set backspace=indent,eol,start
 " default register is the system clipboard, because vim ain't the only program.
 set clipboard=unnamed
 " 2-space indents; <</>> shifting goes to nearest multiple of 2, even from odds.
