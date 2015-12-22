@@ -54,8 +54,11 @@ let NERDTreeShowHidden=1
 let g:ack_autofold_results = 1
 " Treat <li> and <p> tags like the block tags they are.
 let g:html_indent_tags = 'li\|p'
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
+" no thanks. It's the default, but explicitness is a virtue.
+let g:syntastic_check_on_open=0
+let g:syntastic_mode_map = { "mode": "active",
+      \ "active_filetypes": ["ruby"],
+      \ "passive_filetypes": ["javascript"] }
 " Angular Is Not A Crime.
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " keep cursor column when using JK easymotion
