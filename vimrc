@@ -52,7 +52,7 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
 " fold together all hits from same file in ack results when not under cursor.
 let g:ack_autofold_results = 1
-" Treat <li> and <p> tags like the block tags they are
+" Treat <li> and <p> tags like the block tags they are.
 let g:html_indent_tags = 'li\|p'
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
@@ -109,10 +109,10 @@ endif
 nnoremap ; :
 nnoremap : ;
 " smash escape            CURSOR POSITION AFTER:
-"                       |F| | |J| | <= backwards <=
+"                       |F| | |J| | <= backwards like esc <=
 inoremap jf <esc>
 inoremap fj <esc>
-"                       | | | |J|K| => forwards =>
+"                       | | | |J|K| => doesn't move =>
 inoremap jk <esc>l
 inoremap kj <esc>l
 " quickly insert new line above...
