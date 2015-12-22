@@ -23,8 +23,7 @@ set numberwidth=5
 " redundant with powerline installed; left in b/c Wu-Tang is for the children.
 set ruler
 " make it obvious when lines run over 80ch; set the color to black for subtlety.
-set textwidth=80
-set colorcolumn=+1
+set colorcolumn=81
 " for fuck's sake, use git for source integrity, not obnoxious backup files.
 set noswapfile
 set encoding=utf-8
@@ -80,6 +79,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead ~/job_search/* nnoremap k gk
   autocmd BufNewFile,BufRead ~/job_search/* setlocal spell spelllang=en_us
   autocmd BufNewFile,BufRead ~/job_search/* nnoremap <leader>sp :setlocal spell! spelllang=en_us<cr>
+  autocmd BufNewFile,BufRead ~/job_search/* setlocal textwidth=80
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
@@ -154,6 +154,8 @@ nnoremap <leader>T gT
 nnoremap <leader>f ^
 " quickly jump to inside an empty matched pair (e.g. '()', '""')
 nnoremap <leader>in ?\%<c-r>=line('.')<Return>l\({}\\|\[]\\|<>\\|><\\|()\\|""\\|''\\|><lt>\)?s+1<Return>
+" for when using textwidth: formats current paragraph
+nnoremap <leader>ind gqip
 " delete all lines starting with '#'.
 nnoremap <leader>dc :g/\s*#/d<cr>
 " reindent entire file.
