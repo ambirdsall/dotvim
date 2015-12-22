@@ -108,9 +108,16 @@ endif
 """"""""""""""""""""""""                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" scroll browser-style
+noremap <up> <c-y>
+noremap <down> <c-e>
+nnoremap <left> zh
+nnoremap <right> zl
 " because life is too short to hit shift that often.
 nnoremap ; :
 nnoremap : ;
+" `Y` yanks from current cursor position to EOL instead of acting like `yy`.
+nnoremap Y y$
 " smash escape            CURSOR POSITION AFTER:
 "                       |F| | |J| | <= backwards like esc <=
 inoremap jf <esc>
@@ -131,15 +138,8 @@ inoremap <c-h> <left>
 inoremap <c-j> <down>
 inoremap <c-k> <up>
 inoremap <c-l> <right>
-" `Y` yanks from current cursor position to EOL instead of acting like `yy`.
-nnoremap Y y$
 " I never want to automatically jump to the first match. That's silly.
 cnoreabbrev Ack Ack!
-" scroll browser-style
-noremap <up> <c-y>
-noremap <down> <c-e>
-nnoremap <left> zh
-nnoremap <right> zl
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" TAKE ME TO YOUR LEADER "
