@@ -138,6 +138,8 @@ inoremap <c-h> <left>
 inoremap <c-j> <down>
 inoremap <c-k> <up>
 inoremap <c-l> <right>
+" typing `//` in visual mode searches for the selection
+vnoremap // y/<C-R>"<CR>
 " I never want to automatically jump to the first match. That's silly.
 cnoreabbrev Ack Ack!
 
