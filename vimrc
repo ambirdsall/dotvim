@@ -180,6 +180,7 @@ nnoremap <leader>O O<esc>
 " place your cursor on an id or class and hit <leader>]
 " to jump to the definition
 nnoremap <leader>] :tag /<c-r>=expand('<cword>')<cr><cr>
+nnoremap <leader>tts :%s/\t/  /g<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGINS AND WHATNOT:
 
