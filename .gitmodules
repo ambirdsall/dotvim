@@ -110,3 +110,6 @@
 [submodule "bundle/vim-slim"]
   path = bundle/vim-slim
   url = https://github.com/slim-template/vim-slim.git
+[submodule "bundle/railscasts-theme"]
+	path = bundle/railscasts-theme
+	url = git@github.com:dhruvasagar/vim-railscasts-theme.git
