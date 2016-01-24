@@ -8,9 +8,8 @@ runtime macros/matchit.vim
 """"""""""""""""""""""""""""""""""""""""""" MAKE VIM PRETTY AND FORMATTED NICE "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" delek, but inheriting a different current linenum color from slate. NICE.
-color slate
-color delek
+" high contrast is for presentations, yo.
+color railscasts
 " how the shit is syntax highlighting not default. HOW.
 syntax enable
 " ditto contextual formatting.
@@ -37,8 +36,6 @@ set backspace=indent,eol,start
 set clipboard=unnamed
 " 2-space indents; <</>> shifting goes to nearest multiple of 2, even from odds.
 set softtabstop=2 shiftwidth=2 shiftround expandtab
-" allow hidden buffers, to maintain unsaved changes without cluttering screen.
-set hidden
 " 450ms is enough to finish typing combos even on a bad day, but not toooo long.
 set timeoutlen=450
 " split panes spawn to the right and bottom, b/c Principle of Least Surprise.
@@ -73,6 +70,9 @@ python del powerline_setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""" THE LAND OF AUTOCOMMAND "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
+  " cron jobs, tho
+  autocmd filetype crontab setlocal nobackup nowritebackup
+
   " automatically save files on focus lost. Theoretically.
   au FocusLost * silent! wa
 
@@ -122,6 +122,8 @@ nnoremap Y y$
 "                       |F| | |J| | <= backwards like esc <=
 inoremap jf <esc>
 inoremap fj <esc>
+vnoremap jf <esc>
+vnoremap fj <esc>
 "                       | | | |J|K| => doesn't move =>
 inoremap jk <esc>l
 inoremap kj <esc>l
@@ -184,8 +186,12 @@ nnoremap <leader>tts :%s/\t/  /g<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGINS AND WHATNOT:
 
-" vim-fugitive git status.
+" ag.vim
+" The terminal whitespace is on purpose here
+nnoremap <leader>ag :Ag! 
+" vim-fugitive
 nnoremap <leader>s :Gstatus<cr>
+nnoremap <leader>b :Gblame<cr>
 " vim-commentary
 nmap <leader>c gcc
 " ctags
