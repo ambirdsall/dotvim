@@ -25,6 +25,8 @@ set ruler
 set colorcolumn=81
 " for fuck's sake, use git for source integrity, not obnoxious backup files.
 set noswapfile
+" don't redraw during macros, because perfs
+set lazyredraw
 set encoding=utf-8
 highlight ColorColumn ctermbg=0
 highlight Folded ctermbg=NONE
@@ -189,6 +191,8 @@ nnoremap <leader>tts :%s/\t/  /g<cr>
 " ag.vim
 " The terminal whitespace is on purpose here
 nnoremap <leader>ag :Ag! 
+nnoremap <leader>ack :Ack! 
+
 " vim-fugitive
 nnoremap <leader>s :Gstatus<cr>
 nnoremap <leader>b :Gblame<cr>
