@@ -27,6 +27,8 @@ set colorcolumn=81
 set noswapfile
 " don't redraw during macros, because perfs
 set lazyredraw
+" it is okay to change files without saving every damn thing
+set hidden
 set encoding=utf-8
 highlight ColorColumn ctermbg=0
 highlight Folded ctermbg=NONE
@@ -43,12 +45,17 @@ set timeoutlen=450
 " split panes spawn to the right and bottom, b/c Principle of Least Surprise.
 set splitbelow
 set splitright
+" <leader>r toggles wrap for when it's needed
+set nowrap
 " always compare diffs with vertical splits.
 set diffopt+=vertical
 " more data makes for easier navigation.
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
+let NERDTreeWinSize=60
+let NERDTreeMouseMode=2 " single click to open dirs, double click to open files
+
 " fold together all hits from same file in ack results when not under cursor.
 let g:ack_autofold_results = 1
 " Treat <li> and <p> tags like the block tags they are.
@@ -72,8 +79,21 @@ python del powerline_setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""" THE LAND OF AUTOCOMMAND "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
+  " automatically open NERDTree when vim is opened with no args
+  function! StartUp()
+    if 0 == argc()
+      NERDTree
+    end
+  endfunction
+
+  autocmd VimEnter * call StartUp()
+
   " cron jobs, tho
   autocmd filetype crontab setlocal nobackup nowritebackup
+
+  " nice line formatting for free in markdown
+  autocmd bufreadpre *.md setlocal textwidth=80
+  autocmd bufreadpre *.markdown setlocal textwidth=80
 
   " automatically save files on focus lost. Theoretically.
   au FocusLost * silent! wa
