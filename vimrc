@@ -158,9 +158,6 @@ let mapleader=" "
 nnoremap <leader>ev :tabe ~/.vim/vimrc<cr>
 " quickly toggle between last two files.
 nnoremap <leader><leader><leader> <c-^>
-" navigate tabs quickly
-nnoremap <leader>t gt
-nnoremap <leader>T gT
 " jump to first non-whitespace character.
 nnoremap <leader>f ^
 " quickly jump to inside an empty matched pair (e.g. '()', '""')
@@ -187,6 +184,12 @@ nnoremap <leader>] :tag /<c-r>=expand('<cword>')<cr><cr>
 nnoremap <leader>tts :%s/\t/  /g<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGINS AND WHATNOT:
+
+" vim-rspec
+nnoremap <leader>t :call RunCurrentSpecFile()<cr>
+nnoremap <leader>n :call RunNearestSpec()<cr>
+nnoremap <leader>l :call RunLastSpec()<cr>
+" nnoremap <leader>a :call RunAllSpecs()<cr>
 
 " ag.vim
 " The terminal whitespace is on purpose here
