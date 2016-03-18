@@ -2,14 +2,6 @@
 	path = bundle/emmet-vim
 	url = https://github.com/ambirdsall/emmet-vim.git
 	ignore = dirty
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-	ignore = dirty
-[submodule "bundle/vim-nerdtree-tabs"]
-	path = bundle/vim-nerdtree-tabs
-	url = https://github.com/jistr/vim-nerdtree-tabs.git
-	ignore = dirty
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -119,3 +111,9 @@
 [submodule "bundle/vim-rspec"]
 	path = bundle/vim-rspec
 	url = https://github.com/thoughtbot/vim-rspec.git
+[submodule "bundle/vim-rake"]
+	path = bundle/vim-rake
+	url = git://github.com/tpope/vim-rake.git
+[submodule "bundle/vim-projectionist"]
+	path = bundle/vim-projectionist
+	url = git://github.com/tpope/vim-projectionist.git
