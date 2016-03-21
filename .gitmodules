@@ -117,3 +117,9 @@
 [submodule "bundle/vim-projectionist"]
 	path = bundle/vim-projectionist
 	url = git://github.com/tpope/vim-projectionist.git
+[submodule "bundle/ReplaceWithRegister"]
+	path = bundle/ReplaceWithRegister
+	url = git://github.com/vim-scripts/ReplaceWithRegister.git
+[submodule "bundle/vim-textobj-line"]
+	path = bundle/vim-textobj-line
+	url = git://github.com/kana/vim-textobj-line.git
