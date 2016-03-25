@@ -8,25 +8,19 @@ runtime macros/matchit.vim
 """"""""""""""""""""""""""""""""""""""""""" MAKE VIM PRETTY AND FORMATTED NICE "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" high contrast is for presentations, yo.
 color railscasts
-" how the shit is syntax highlighting not default. HOW.
 syntax enable
-" ditto contextual formatting.
 filetype indent plugin on
-" hybrid linenumbers are the best linenumbers.
+" hybrid linenumbers
 set number
 set relativenumber
-" gutter 1 column bigger than default for readability at a glance.
-set numberwidth=5
-" redundant with powerline installed; left in b/c Wu-Tang is for the children.
-set ruler
-" make it obvious when lines run over 80ch; set the color to black for subtlety.
+set numberwidth=5 " gutter column bigger for readability
+set ruler " redundant with powerline installed; left in b/c Wu-Tang is for the
+set laststatus=2 " always display status line, even in single buffer
 set colorcolumn=81
-" for fuck's sake, use git for source integrity, not obnoxious backup files.
-set noswapfile
-" don't redraw during macros, because perfs
-set lazyredraw
+set noswapfile " that's git's job
+set lazyredraw " don't redraw during macros "
+set showcmd
 " it is okay to change files without saving every damn thing
 set hidden
 set encoding=utf-8
@@ -45,16 +39,15 @@ set timeoutlen=450
 " split panes spawn to the right and bottom, b/c Principle of Least Surprise.
 set splitbelow
 set splitright
-" <leader>r toggles wrap for when it's needed
-set nowrap
-" always compare diffs with vertical splits.
-set diffopt+=vertical
-" more data makes for easier navigation.
+set nowrap " <leader>r toggles wrap for when it's needed
+set diffopt+=vertical " always compare diffs with vertical splits.
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-let NERDTreeShowLineNumbers=1
-let NERDTreeShowHidden=1
-let NERDTreeWinSize=60
-let NERDTreeMouseMode=2 " single click to open dirs, double click to open files
+let g:netrw_banner=0
+
+ " Speed up viewport scrolling {{{
+  nnoremap <C-e> 3<C-e>
+  nnoremap <C-y> 3<C-y>
+  " }}}
 
 " fold together all hits from same file in ack results when not under cursor.
 let g:ack_autofold_results = 1
@@ -80,13 +73,13 @@ python del powerline_setup
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
   " automatically open NERDTree when vim is opened with no args
-  function! StartUp()
-    if 0 == argc()
-      NERDTree
-    end
-  endfunction
+  " function! StartUp()
+  "   if 0 == argc()
+  "     NERDTree
+  "   end
+  " endfunction
 
-  autocmd VimEnter * call StartUp()
+  " autocmd VimEnter * call StartUp()
 
   " cron jobs, tho
   autocmd filetype crontab setlocal nobackup nowritebackup
@@ -138,6 +131,9 @@ nnoremap <right> zl
 " because life is too short to hit shift that often.
 nnoremap ; :
 nnoremap : ;
+" wizard party!!!!! very magic by default
+:nnoremap / /\v
+:cnoremap %s/ %s/\v
 " `Y` yanks from current cursor position to EOL instead of acting like `yy`.
 nnoremap Y y$
 " smash escape            CURSOR POSITION AFTER:
@@ -164,9 +160,15 @@ inoremap <c-k> <up>
 inoremap <c-l> <right>
 " typing `//` in visual mode searches for the selection
 vnoremap // y/<C-R>"<CR>
-" I never want to automatically jump to the first match. That's silly.
-cnoreabbrev Ack Ack!
 
+" jump to previous quickfix item
+nmap [q :cprev
+" jump to next quickfix item
+nmap ]q :cnext
+" jump to first quickfix item
+nmap [Q :cfirst
+" jump to last quickfix item
+nmap ]Q :clast
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""" TAKE ME TO YOUR LEADER "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -178,6 +180,8 @@ let mapleader=" "
 nnoremap <leader>ev :tabe ~/.vim/vimrc<cr>
 " quickly toggle between last two files.
 nnoremap <leader><leader><leader> <c-^>
+" see open buffers or jump to a specific number
+nnoremap <leader>b :buffer
 " jump to first non-whitespace character.
 nnoremap <leader>f ^
 " quickly jump to inside an empty matched pair (e.g. '()', '""')
@@ -205,6 +209,12 @@ nnoremap <leader>tts :%s/\t/  /g<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGINS AND WHATNOT:
 
+" vim-fugitive
+nnoremap <leader>s :Gstatus<cr>
+nnoremap <leader>bl :Gblame<cr>
+nnoremap <leader>ci :Gcommit
+nnoremap <leader>di :Gdiff
+
 " vim-rspec
 nnoremap <leader>t :call RunCurrentSpecFile()<cr>
 nnoremap <leader>n :call RunNearestSpec()<cr>
@@ -215,10 +225,9 @@ nnoremap <leader>l :call RunLastSpec()<cr>
 " The terminal whitespace is on purpose here
 nnoremap <leader>ag :Ag! 
 nnoremap <leader>ack :Ack! 
+" I never want to automatically jump to the first match. That's silly.
+cnoreabbrev Ack Ack!
 
-" vim-fugitive
-nnoremap <leader>s :Gstatus<cr>
-nnoremap <leader>b :Gblame<cr>
 " vim-commentary
 nmap <leader>c gcc
 " ctags
@@ -226,7 +235,7 @@ nnoremap <leader>. :TagbarToggle<cr>
 " vim-better-whitespace
 nnoremap <leader>sw :StripWhitespace<cr>
 " vim-nerdtree-tabs
-nnoremap <leader>d :NERDTreeTabsToggle<cr>
+" nnoremap <leader>d :NERDTreeTabsToggle<cr>
 " easymotion
 nmap <leader>a <Plug>(easymotion-s2)
 
