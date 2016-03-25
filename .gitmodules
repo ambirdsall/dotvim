@@ -126,3 +126,6 @@
 [submodule "bundle/vim-exchange"]
 	path = bundle/vim-exchange
 	url = git://github.com/tommcdo/vim-exchange.git
+[submodule "bundle/vim-textobj-entire"]
+	path = bundle/vim-textobj-entire
+	url = git://github.com/kana/vim-textobj-entire.git
