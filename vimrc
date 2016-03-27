@@ -1,14 +1,69 @@
 set nocompatible
-execute pathogen#infect()
-call pathogen#helptags()
-
 runtime macros/matchit.vim
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUG THEM PLUGINS IN "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-projectionist'
+Plugin 'thoughtbot/vim-rspec'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" GIT INTEGRATION "
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" CUSTOM TEXT OBJECTS "
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-line'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'kana/vim-textobj-entire'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" CUSTOM VIM COMMANDS "
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'vim-scripts/ReplaceWithRegister'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" SYNTAX HIGHLIGHTING "
+Plugin 'slim-template/vim-slim'
+Plugin 'tpope/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" NAVIGATION "
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'tpope/vim-bundler'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" TYPING AIDS "
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'ambirdsall/emmet-vim'
+Plugin 'Townk/vim-autoclose'
+Plugin 'tpope/vim-endwise'
+Plugin 'ntpeters/vim-better-whitespace'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" SEARCHING "
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" COLORS "
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'dhruvasagar/vim-railscasts-theme'
+call vundle#end()
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""" MAKE VIM PRETTY AND FORMATTED NICE "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-color railscasts
 syntax enable
 filetype indent plugin on
 " hybrid linenumbers
@@ -72,14 +127,8 @@ python del powerline_setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""" THE LAND OF AUTOCOMMAND "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
-  " automatically open NERDTree when vim is opened with no args
-  " function! StartUp()
-  "   if 0 == argc()
-  "     NERDTree
-  "   end
-  " endfunction
-
-  " autocmd VimEnter * call StartUp()
+  " automatically rebalance splits on resize
+  autocmd VimResized * :wincmd =
 
   " cron jobs, tho
   autocmd filetype crontab setlocal nobackup nowritebackup
@@ -188,8 +237,6 @@ nnoremap <leader>f ^
 nnoremap <leader>in ?\%<c-r>=line('.')<Return>l\({}\\|\[]\\|<>\\|><\\|()\\|""\\|''\\|><lt>\)?s+1<Return>
 " for when using textwidth: formats current paragraph
 nnoremap <leader>ind gqip
-" delete all lines starting with '#'.
-nnoremap <leader>dc :g/\s*#/d<cr>
 " reindent entire file.
 nnoremap <leader>rei ggVG=<c-o><c-o>
 " yank every dang thing.
@@ -201,6 +248,8 @@ nnoremap <leader>w :w<cr>
 " new lines, but you stay in normal mode.
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
+" open file in vertical split
+nnoremap <leader>gf <c-w>f<bar><c-w>L
 " CSS tags
 " place your cursor on an id or class and hit <leader>]
 " to jump to the definition
