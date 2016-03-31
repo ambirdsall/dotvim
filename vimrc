@@ -115,8 +115,6 @@ let g:syntastic_mode_map = { "mode": "active",
       \ "passive_filetypes": ["javascript"] }
 " Angular Is Not A Crime.
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-" keep cursor column when using JK easymotion
-let g:EasyMotion_startofline = 0
 
 " powerline is the best line I know.
 python from powerline.vim import setup as powerline_setup
