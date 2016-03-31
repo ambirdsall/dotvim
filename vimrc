@@ -9,46 +9,50 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tpope/vim-projectionist'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-projectionist'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" GIT INTEGRATION "
-Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""" CUSTOM TEXT OBJECTS "
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-line'
-Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-entire'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'kana/vim-textobj-line'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'whatyouhide/vim-textobj-erb'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""" CUSTOM VIM COMMANDS "
+Plugin 'christoomey/vim-sort-motion'
+Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'tommcdo/vim-exchange'
 Plugin 'vim-scripts/ReplaceWithRegister'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""" SYNTAX HIGHLIGHTING "
-Plugin 'slim-template/vim-slim'
-Plugin 'tpope/vim-markdown'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'slim-template/vim-slim'
+Plugin 'tpope/vim-markdown'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" NAVIGATION "
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" TYPING AIDS "
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-scripts/closetag.vim'
-Plugin 'ambirdsall/emmet-vim'
 Plugin 'Townk/vim-autoclose'
-Plugin 'tpope/vim-endwise'
+Plugin 'ambirdsall/emmet-vim'
+Plugin 'christoomey/vim-system-copy'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-endwise'
+Plugin 'vim-scripts/closetag.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" SEARCHING "
 Plugin 'mileszs/ack.vim'
@@ -56,7 +60,7 @@ Plugin 'rking/ag.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" COLORS "
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'dhruvasagar/vim-railscasts-theme'
+
 call vundle#end()
 
 
@@ -65,6 +69,9 @@ call vundle#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 syntax enable
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
 filetype indent plugin on
 " hybrid linenumbers
 set number
@@ -72,7 +79,6 @@ set relativenumber
 set numberwidth=5 " gutter column bigger for readability
 set ruler " redundant with powerline installed; left in b/c Wu-Tang is for the
 set laststatus=2 " always display status line, even in single buffer
-set colorcolumn=81
 set noswapfile " that's git's job
 set lazyredraw " don't redraw during macros "
 set showcmd
@@ -86,7 +92,7 @@ set mouse=a
 " ditto deleting shit in insert mode
 set backspace=indent,eol,start
 " default register is the system clipboard, because vim ain't the only program.
-set clipboard=unnamed
+" set clipboard=unnamed
 " 2-space indents; <</>> shifting goes to nearest multiple of 2, even from odds.
 set softtabstop=2 shiftwidth=2 shiftround expandtab
 " 450ms is enough to finish typing combos even on a bad day, but not toooo long.
@@ -125,6 +131,14 @@ python del powerline_setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""" THE LAND OF AUTOCOMMAND "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
+  augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+    au WinLeave * setlocal nocursorline
+    au WinLeave * setlocal nocursorcolumn
+  augroup END
+
   " automatically rebalance splits on resize
   autocmd VimResized * :wincmd =
 
@@ -156,6 +170,18 @@ if has("autocmd")
         \   exe "normal g`\"" |
         \ endif
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" FUNCTIONS "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! g:ToggleColorColumn()
+  if &colorcolumn != ''
+    setlocal colorcolumn&
+  else
+    setlocal colorcolumn=81
+  endif
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""  _  _ ___ ___ ___   _____ _  _ ___ ___ ___   ___ ___  "
@@ -207,6 +233,8 @@ inoremap <c-k> <up>
 inoremap <c-l> <right>
 " typing `//` in visual mode searches for the selection
 vnoremap // y/<C-R>"<CR>
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 
 " jump to previous quickfix item
 nmap [q :cprev
@@ -223,30 +251,18 @@ nmap ]Q :clast
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" RAW DANG VIM:
 let mapleader=" "
 
-" mess with this file like it ain't no thing.
 nnoremap <leader>ev :tabe ~/.vim/vimrc<cr>
-" quickly toggle between last two files.
 nnoremap <leader><leader><leader> <c-^>
-" see open buffers or jump to a specific number
 nnoremap <leader>b :buffer
-" jump to first non-whitespace character.
 nnoremap <leader>f ^
 " quickly jump to inside an empty matched pair (e.g. '()', '""')
 nnoremap <leader>in ?\%<c-r>=line('.')<Return>l\({}\\|\[]\\|<>\\|><\\|()\\|""\\|''\\|><lt>\)?s+1<Return>
-" for when using textwidth: formats current paragraph
 nnoremap <leader>ind gqip
-" reindent entire file.
-nnoremap <leader>rei ggVG=<c-o><c-o>
-" yank every dang thing.
-nnoremap <leader>ya ggVGy<c-o><c-o>
-" toggle linewrap.
 nnoremap <leader>r :set wrap!<cr>
-" save wicked fast.
 nnoremap <leader>w :w<cr>
-" new lines, but you stay in normal mode.
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
-" open file in vertical split
+nnoremap <leader>p "*p
 nnoremap <leader>gf <c-w>f<bar><c-w>L
 " CSS tags
 " place your cursor on an id or class and hit <leader>]
@@ -254,6 +270,8 @@ nnoremap <leader>gf <c-w>f<bar><c-w>L
 nnoremap <leader>] :tag /<c-r>=expand('<cword>')<cr><cr>
 nnoremap <leader>tts :%s/\t/  /g<cr>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" FUNCTIONS:
+nnoremap <silent> <leader>cc :call g:ToggleColorColumn()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGINS AND WHATNOT:
 
 " vim-fugitive
